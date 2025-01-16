@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Website Pendidikan | Edit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='assets/image.jpg') }}" alt="Logo Pendidikan">
+        <h1>Selamat Datang di Website Pendidikan</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    {% for item in data %}
+    <form action="{{ url_for('edit_pendidikan', id=item[0]) }}" method="post">
+        <label for="nama_barang_jasa">Nama Barang/Jasa:</label>
+        <input type="text" id="nama_barang_jasa" name="nama_barang_jasa" required value="{{ item[1] }}">
+    
+        <label for="deskripsi">Deskripsi:</label>
+        <textarea id="deskripsi" name="deskripsi" required>{{ item[2] }}</textarea>
+    
+        <input type="submit" value="Simpan">
+    </form>
+    {% endfor %}
+    
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Website ini bertujuan untuk menyediakan informasi pendidikan yang mudah diakses oleh semua kalangan. Kami berdedikasi untuk mendukung perkembangan dunia pendidikan di Indonesia.</p>
+        <p>Media Sosial: <a href="https://www.instagram.com/kemdikbud.ri/profilecard/?igsh=b2RjMnF6djZqdjNp">intragram</a></p>
+        <p>Selengkapnya bisa dilihat pada link ini: <a href="https://www.kemdikbud.go.id/" target="_blank">kemdikbud</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Website Pendidikan. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
